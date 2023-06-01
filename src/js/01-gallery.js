@@ -1,5 +1,25 @@
+import SimpleLightbox from "simplelightbox";
+import "simplelightbox/dist/simple-lightbox.min.css";
 // Add imports above this line
-import { galleryItems } from './gallery-items';
+import { galleryItems } from './gallery-items.js';
 // Change code below this line
+const refs = {
+    wrapper: document.querySelector(".gallery"),
+}
 
-console.log(galleryItems);
+const gellaryItemsEl = galleryItems.map(({preview, original, description}) => {
+    return `<li class="gallery__item">
+   <a class="gallery__link" href="${original}">
+      <img class="gallery__image" src="${preview}" alt="${description}" />
+   </a></li>`}).join("");
+
+refs.wrapper.insertAdjacentHTML("beforeend",gellaryItemsEl);
+
+refs.wrapper.addEventListener("click", onClickGellaryItem);
+
+function onClickGellaryItem(evt) {
+    evt.preventDefault();
+    if (evt.target.nodeName !== "IMG") {
+        return;
+    }
+}
