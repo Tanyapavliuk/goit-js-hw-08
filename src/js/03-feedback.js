@@ -14,10 +14,10 @@ refs.form.addEventListener("input", throttle(onFillInput,500));
 
 if (!localStorage.STORAGE_KEY) {
     const { email, message } = JSON.parse(localStorage.getItem(STORAGE_KEY));
-    if (!localStorage.getItem({email})) {
+    if (!localStorage.getItem(STORAGE_KEY.email)) {
          refs.email.value = " ";
     }
-    if (!localStorage.getItem({message})) {
+    if (!localStorage.getItem(STORAGE_KEY.message)) {
       refs.message.value = " ";  
     }
     refs.email.value = email;
@@ -27,7 +27,7 @@ if (!localStorage.STORAGE_KEY) {
 function onClickSubmit(evt) {
     evt.preventDefault();
 
-    console.log(formInfo);
+    console.log(JSON.parse(localStorage.getItem(STORAGE_KEY)));
 
     evt.currentTarget.reset(); //Очищение всех полей
 
