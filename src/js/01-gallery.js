@@ -3,6 +3,7 @@ import "simplelightbox/dist/simple-lightbox.min.css";
 // Add imports above this line
 import { galleryItems } from './gallery-items.js';
 // Change code below this line
+
 const refs = {
     wrapper: document.querySelector(".gallery"),
 }
@@ -14,6 +15,8 @@ const gellaryItemsEl = galleryItems.map(({preview, original, description}) => {
    </a></li>`}).join("");
 
 refs.wrapper.insertAdjacentHTML("beforeend",gellaryItemsEl);
+
+var lightbox = new SimpleLightbox('.gallery a', { captionsData: "alt", captionDelay: 250 });
 
 refs.wrapper.addEventListener("click", onClickGellaryItem);
 
