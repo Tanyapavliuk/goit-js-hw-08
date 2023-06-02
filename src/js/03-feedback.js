@@ -17,7 +17,7 @@ if (!localStorage.getItem(STORAGE_KEY)) {
 } else {
 const { email, message } = JSON.parse(localStorage.getItem(STORAGE_KEY));
 
-if (email !== "" && message !== "") {
+if (email !== "" || message !== "") {
     
     refs.email.value = email;
     refs.message.value = message;
