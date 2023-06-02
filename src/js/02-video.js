@@ -10,7 +10,6 @@ player.on('timeupdate', throttle(function(data) {
 
 const currentTime = window.localStorage.getItem('videoplayer-current-time');
 
-
 player.setCurrentTime(currentTime).then(function(seconds) {
     seconds = currentTime;
 }).catch(function(error) {
@@ -22,3 +21,4 @@ player.setCurrentTime(currentTime).then(function(seconds) {
             break;
     }
 });
+throttle

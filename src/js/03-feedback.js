@@ -12,17 +12,18 @@ const formInfo = {};
 refs.form.addEventListener("submit", onClickSubmit);
 refs.form.addEventListener("input", throttle(onFillInput,500));
 
-if (!localStorage.STORAGE_KEY) {
-    const { email, message } = JSON.parse(localStorage.getItem(STORAGE_KEY));
-    if (!localStorage.getItem(STORAGE_KEY.email)) {
-         refs.email.value = " ";
-    }
-    if (!localStorage.getItem(STORAGE_KEY.message)) {
-      refs.message.value = " ";  
-    }
+const { email, message } = JSON.parse(localStorage.getItem(STORAGE_KEY));
+
+if (email.value !== "" && message.value !== "") {
+    
     refs.email.value = email;
     refs.message.value = message;
+
+}  else {
+    refs.email.value = " ";
+    refs.email.message = " ";
 }
+        
 
 function onClickSubmit(evt) {
     evt.preventDefault();
@@ -41,3 +42,4 @@ function onFillInput(evt) {
 
     localStorage.setItem(STORAGE_KEY, info)
 };
+
