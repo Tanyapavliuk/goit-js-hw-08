@@ -15,9 +15,9 @@ refs.form.addEventListener("input", throttle(onFillInput, 500));
 if (!localStorage.getItem(STORAGE_KEY)) {
     return
 } else {
-    const { email, message } = JSON.parse(localStorage.getItem(STORAGE_KEY));
+const { email, message } = JSON.parse(localStorage.getItem(STORAGE_KEY));
 
-if (email.value !== "" && message.value !== "") {
+if (email !== "" && message !== "") {
     
     refs.email.value = email;
     refs.message.value = message;
