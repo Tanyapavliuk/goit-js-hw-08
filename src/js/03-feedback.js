@@ -40,6 +40,9 @@ function onClickSubmit(evt) {
 };
 
 function onFillInput(evt) { 
+    formInfo.message = refs.message.value;
+    formInfo.email = refs.email.value;
+
 
     formInfo[evt.target.name] = evt.target.value;
 
