@@ -10,20 +10,24 @@ const refs = {
 const formInfo = {};
 
 refs.form.addEventListener("submit", onClickSubmit);
-refs.form.addEventListener("input", throttle(onFillInput,500));
+refs.form.addEventListener("input", throttle(onFillInput, 500));
 
-const { email, message } = JSON.parse(localStorage.getItem(STORAGE_KEY));
+if (!localStorage.getItem(STORAGE_KEY)) {
+    return
+} else {
+    const { email, message } = JSON.parse(localStorage.getItem(STORAGE_KEY));
 
 if (email.value !== "" && message.value !== "") {
     
     refs.email.value = email;
     refs.message.value = message;
 
-}  else {
-    refs.email.value = " ";
-    refs.email.message = " ";
+     }  else {
+            refs.email.value = " ";
+            refs.email.message = " ";
+        }
 }
-        
+      
 
 function onClickSubmit(evt) {
     evt.preventDefault();
@@ -36,6 +40,7 @@ function onClickSubmit(evt) {
 };
 
 function onFillInput(evt) { 
+
     formInfo[evt.target.name] = evt.target.value;
 
     const info = JSON.stringify(formInfo);
