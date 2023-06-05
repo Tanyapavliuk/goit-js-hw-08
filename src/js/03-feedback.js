@@ -30,8 +30,13 @@ if (email !== "" || message !== "") {
       
 
 function onClickSubmit(evt) {
-    evt.preventDefault();
+    const { email, message } = JSON.parse(localStorage.getItem(STORAGE_KEY));
+    if (email === "" || message === "") {
+        return;
+    }
 
+    evt.preventDefault();
+     
     console.log(JSON.parse(localStorage.getItem(STORAGE_KEY)));
 
     evt.currentTarget.reset(); //Очищение всех полей
@@ -40,6 +45,7 @@ function onClickSubmit(evt) {
 };
 
 function onFillInput(evt) { 
+   
     formInfo.message = refs.message.value;
     formInfo.email = refs.email.value;
 
